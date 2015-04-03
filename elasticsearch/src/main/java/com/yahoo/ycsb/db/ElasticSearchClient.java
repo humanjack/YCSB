@@ -37,9 +37,9 @@ public class ElasticSearchClient extends DB {
 
     public static final String DEFAULT_CLUSTER_NAME = "es.ycsb.cluster";
     public static final String DEFAULT_INDEX_KEY = "es.ycsb";
-    private Node node;
-    private Client client;
-    private String indexKey;
+    Node node;
+    Client client;
+    String indexKey;
 
     /**
      * Initialize any state for this DB. Called once per DB instance; there is
@@ -240,7 +240,7 @@ public class ElasticSearchClient extends DB {
             final SearchResponse response = client.prepareSearch(indexKey)
                     .setTypes(table)
                     .setQuery(matchAllQuery())
-                    .setFilter(filter)
+                    .setPostFilter(filter)
                     .setSize(recordcount)
                     .execute()
                     .actionGet();
