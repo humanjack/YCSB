@@ -238,10 +238,7 @@ class ClientThread extends Thread
 				while (((_opcount == 0) || (_opsdone < _opcount)) && !_workload.isStopRequested())
 				{
 
-					if (!_workload.doTransaction(_db,_workloadstate))
-					{
-						break;
-					}
+					_workload.doTransaction(_db,_workloadstate);
 
 					_opsdone++;
 
@@ -274,10 +271,7 @@ class ClientThread extends Thread
 				while (((_opcount == 0) || (_opsdone < _opcount)) && !_workload.isStopRequested())
 				{
 
-					if (!_workload.doInsert(_db,_workloadstate))
-					{
-						break;
-					}
+					_workload.doInsert(_db,_workloadstate);
 
 					_opsdone++;
 
